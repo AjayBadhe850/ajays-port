@@ -377,16 +377,105 @@ class FlavorGraph {
     // Build ingredient substitution map
     buildSubstitutionMap() {
         return {
-            "chicken": ["turkey", "tofu", "fish"],
-            "beef": ["lamb", "pork", "mushrooms"],
-            "pasta": ["rice", "quinoa", "zucchini noodles"],
-            "cheese": ["nutritional yeast", "cashew cream", "avocado"],
-            "milk": ["almond milk", "coconut milk", "oat milk"],
-            "butter": ["olive oil", "coconut oil", "avocado"],
-            "eggs": ["flax eggs", "chia eggs", "applesauce"],
-            "flour": ["almond flour", "coconut flour", "oat flour"],
-            "sugar": ["honey", "maple syrup", "stevia"],
-            "oil": ["butter", "coconut oil", "avocado oil"]
+            // Protein substitutions
+            "chicken": ["turkey", "tofu", "fish", "shrimp", "tempeh"],
+            "beef": ["lamb", "pork", "mushrooms", "tofu", "tempeh"],
+            "pork": ["chicken", "turkey", "tofu", "mushrooms"],
+            "fish": ["salmon", "tuna", "shrimp", "tofu"],
+            "eggs": ["flax eggs", "chia eggs", "applesauce", "banana"],
+            "bacon": ["turkey bacon", "mushrooms", "smoked tofu"],
+            "ground beef": ["ground turkey", "ground chicken", "lentils", "mushrooms"],
+            
+            // Dairy substitutions
+            "milk": ["almond milk", "coconut milk", "oat milk", "soy milk"],
+            "cheese": ["nutritional yeast", "cashew cream", "avocado", "vegan cheese"],
+            "butter": ["olive oil", "coconut oil", "avocado", "ghee"],
+            "cream": ["coconut cream", "cashew cream", "almond milk"],
+            "yogurt": ["coconut yogurt", "almond yogurt", "cashew cream"],
+            "sour cream": ["cashew cream", "coconut cream", "greek yogurt"],
+            
+            // Grain substitutions
+            "pasta": ["rice", "quinoa", "zucchini noodles", "spaghetti squash"],
+            "rice": ["quinoa", "cauliflower rice", "barley", "bulgur"],
+            "bread": ["lettuce wraps", "tortillas", "rice cakes"],
+            "flour": ["almond flour", "coconut flour", "oat flour", "rice flour"],
+            
+            // Vegetable substitutions
+            "onion": ["scallions", "leek", "shallots", "onion powder"],
+            "garlic": ["garlic powder", "shallots", "chives"],
+            "tomato": ["tomato sauce", "sun-dried tomatoes", "cherry tomatoes"],
+            "potato": ["sweet potato", "cauliflower", "turnip"],
+            "bell pepper": ["poblano pepper", "jalapeño", "cubanelle pepper"],
+            "mushrooms": ["shiitake mushrooms", "portobello mushrooms", "oyster mushrooms"],
+            
+            // Oil substitutions
+            "olive oil": ["coconut oil", "avocado oil", "vegetable oil"],
+            "vegetable oil": ["olive oil", "coconut oil", "avocado oil"],
+            "sesame oil": ["olive oil", "coconut oil", "peanut oil"],
+            
+            // Sauce substitutions
+            "soy sauce": ["tamari", "coconut aminos", "worcestershire sauce"],
+            "fish sauce": ["soy sauce", "worcestershire sauce", "miso paste"],
+            "oyster sauce": ["hoisin sauce", "soy sauce", "teriyaki sauce"],
+            "teriyaki sauce": ["soy sauce", "hoisin sauce", "bbq sauce"],
+            "hot sauce": ["sriracha", "chili powder", "cayenne pepper"],
+            
+            // Spice substitutions
+            "ginger": ["ginger powder", "galangal", "lemongrass"],
+            "salt": ["sea salt", "kosher salt", "soy sauce"],
+            "black pepper": ["white pepper", "cayenne pepper", "paprika"],
+            
+            // Herb substitutions
+            "basil": ["oregano", "thyme", "parsley"],
+            "cilantro": ["parsley", "mint", "dill"],
+            "parsley": ["cilantro", "chives", "dill"],
+            "oregano": ["basil", "thyme", "marjoram"],
+            "thyme": ["oregano", "rosemary", "sage"],
+            
+            // Nut substitutions
+            "peanuts": ["almonds", "cashews", "walnuts"],
+            "almonds": ["cashews", "walnuts", "pecans"],
+            "walnuts": ["pecans", "almonds", "cashews"],
+            
+            // Legume substitutions
+            "black beans": ["kidney beans", "pinto beans", "navy beans"],
+            "chickpeas": ["white beans", "cannellini beans", "lentils"],
+            "lentils": ["split peas", "chickpeas", "black beans"],
+            
+            // Fruit substitutions
+            "lemon": ["lime", "vinegar", "citric acid"],
+            "lime": ["lemon", "vinegar", "citric acid"],
+            "apple": ["pear", "peach", "banana"],
+            "banana": ["apple", "pear", "applesauce"],
+            
+            // Special substitutions
+            "miso paste": ["soy sauce", "tamari", "nutritional yeast"],
+            "tahini": ["peanut butter", "almond butter", "cashew butter"],
+            "kimchi": ["sauerkraut", "pickled vegetables", "fermented vegetables"],
+            "gochujang": ["sriracha", "hot sauce", "chili paste"],
+            "coconut milk": ["almond milk", "oat milk", "heavy cream"],
+            "coconut cream": ["heavy cream", "cashew cream", "coconut milk"],
+            
+            // Sweetener substitutions
+            "sugar": ["honey", "maple syrup", "agave", "stevia"],
+            "honey": ["maple syrup", "agave", "brown sugar"],
+            "maple syrup": ["honey", "agave", "brown sugar"],
+            "brown sugar": ["white sugar", "honey", "maple syrup"],
+            
+            // Vinegar substitutions
+            "balsamic vinegar": ["red wine vinegar", "apple cider vinegar", "lemon juice"],
+            "rice vinegar": ["white vinegar", "apple cider vinegar", "lemon juice"],
+            "apple cider vinegar": ["white vinegar", "rice vinegar", "lemon juice"],
+            
+            // Broth substitutions
+            "chicken broth": ["vegetable broth", "beef broth", "water"],
+            "beef broth": ["chicken broth", "vegetable broth", "water"],
+            "vegetable broth": ["chicken broth", "water", "bouillon"],
+            
+            // Wine substitutions
+            "wine": ["broth", "vinegar", "lemon juice"],
+            "red wine": ["beef broth", "balsamic vinegar", "tomato juice"],
+            "white wine": ["chicken broth", "white vinegar", "lemon juice"]
         };
     }
 

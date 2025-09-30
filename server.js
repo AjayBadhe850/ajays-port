@@ -624,14 +624,255 @@ function insertSampleData() {
        recipe.difficulty, recipe.time, recipe.cuisine]);
   });
 
-  // Insert sample ingredients
-  const allIngredients = new Set();
-  sampleRecipes.forEach(recipe => {
-    recipe.ingredients.forEach(ingredient => allIngredients.add(ingredient));
-  });
+  // Insert comprehensive ingredient database
+  const allIngredients = [
+    // Proteins
+    { name: "chicken", category: "protein" },
+    { name: "beef", category: "protein" },
+    { name: "pork", category: "protein" },
+    { name: "lamb", category: "protein" },
+    { name: "fish", category: "protein" },
+    { name: "shrimp", category: "protein" },
+    { name: "salmon", category: "protein" },
+    { name: "tuna", category: "protein" },
+    { name: "crab", category: "protein" },
+    { name: "lobster", category: "protein" },
+    { name: "eggs", category: "protein" },
+    { name: "tofu", category: "protein" },
+    { name: "tempeh", category: "protein" },
+    { name: "ground beef", category: "protein" },
+    { name: "ground turkey", category: "protein" },
+    { name: "ground chicken", category: "protein" },
+    { name: "bacon", category: "protein" },
+    { name: "ham", category: "protein" },
+    { name: "sausage", category: "protein" },
+    { name: "chorizo", category: "protein" },
 
+    // Vegetables
+    { name: "onion", category: "vegetable" },
+    { name: "garlic", category: "vegetable" },
+    { name: "tomato", category: "vegetable" },
+    { name: "potato", category: "vegetable" },
+    { name: "carrot", category: "vegetable" },
+    { name: "celery", category: "vegetable" },
+    { name: "bell pepper", category: "vegetable" },
+    { name: "broccoli", category: "vegetable" },
+    { name: "cauliflower", category: "vegetable" },
+    { name: "cabbage", category: "vegetable" },
+    { name: "lettuce", category: "vegetable" },
+    { name: "spinach", category: "vegetable" },
+    { name: "kale", category: "vegetable" },
+    { name: "cucumber", category: "vegetable" },
+    { name: "zucchini", category: "vegetable" },
+    { name: "eggplant", category: "vegetable" },
+    { name: "mushrooms", category: "vegetable" },
+    { name: "green beans", category: "vegetable" },
+    { name: "peas", category: "vegetable" },
+    { name: "corn", category: "vegetable" },
+    { name: "asparagus", category: "vegetable" },
+    { name: "artichoke", category: "vegetable" },
+    { name: "avocado", category: "vegetable" },
+    { name: "sweet potato", category: "vegetable" },
+    { name: "beet", category: "vegetable" },
+    { name: "radish", category: "vegetable" },
+    { name: "turnip", category: "vegetable" },
+    { name: "leek", category: "vegetable" },
+    { name: "scallions", category: "vegetable" },
+    { name: "green onions", category: "vegetable" },
+
+    // Grains & Starches
+    { name: "rice", category: "grain" },
+    { name: "pasta", category: "grain" },
+    { name: "bread", category: "grain" },
+    { name: "flour", category: "grain" },
+    { name: "quinoa", category: "grain" },
+    { name: "barley", category: "grain" },
+    { name: "oats", category: "grain" },
+    { name: "bulgur", category: "grain" },
+    { name: "couscous", category: "grain" },
+    { name: "noodles", category: "grain" },
+    { name: "rice noodles", category: "grain" },
+    { name: "ramen noodles", category: "grain" },
+    { name: "lasagna noodles", category: "grain" },
+    { name: "tortillas", category: "grain" },
+    { name: "pizza dough", category: "grain" },
+    { name: "burger bun", category: "grain" },
+    { name: "breadcrumbs", category: "grain" },
+    { name: "croutons", category: "grain" },
+
+    // Dairy & Eggs
+    { name: "milk", category: "dairy" },
+    { name: "cheese", category: "dairy" },
+    { name: "mozzarella", category: "dairy" },
+    { name: "parmesan", category: "dairy" },
+    { name: "cheddar", category: "dairy" },
+    { name: "feta", category: "dairy" },
+    { name: "ricotta", category: "dairy" },
+    { name: "cream cheese", category: "dairy" },
+    { name: "sour cream", category: "dairy" },
+    { name: "yogurt", category: "dairy" },
+    { name: "butter", category: "dairy" },
+    { name: "heavy cream", category: "dairy" },
+    { name: "buttermilk", category: "dairy" },
+
+    // Legumes & Beans
+    { name: "beans", category: "legume" },
+    { name: "black beans", category: "legume" },
+    { name: "kidney beans", category: "legume" },
+    { name: "chickpeas", category: "legume" },
+    { name: "lentils", category: "legume" },
+    { name: "split peas", category: "legume" },
+    { name: "lima beans", category: "legume" },
+    { name: "navy beans", category: "legume" },
+    { name: "pinto beans", category: "legume" },
+
+    // Fruits
+    { name: "lemon", category: "fruit" },
+    { name: "lime", category: "fruit" },
+    { name: "orange", category: "fruit" },
+    { name: "apple", category: "fruit" },
+    { name: "banana", category: "fruit" },
+    { name: "pineapple", category: "fruit" },
+    { name: "mango", category: "fruit" },
+    { name: "pear", category: "fruit" },
+    { name: "peach", category: "fruit" },
+    { name: "strawberry", category: "fruit" },
+    { name: "blueberry", category: "fruit" },
+    { name: "raspberry", category: "fruit" },
+    { name: "cranberry", category: "fruit" },
+    { name: "grape", category: "fruit" },
+    { name: "cherry", category: "fruit" },
+
+    // Herbs & Spices
+    { name: "basil", category: "herb" },
+    { name: "oregano", category: "herb" },
+    { name: "thyme", category: "herb" },
+    { name: "rosemary", category: "herb" },
+    { name: "parsley", category: "herb" },
+    { name: "cilantro", category: "herb" },
+    { name: "mint", category: "herb" },
+    { name: "dill", category: "herb" },
+    { name: "sage", category: "herb" },
+    { name: "tarragon", category: "herb" },
+    { name: "chives", category: "herb" },
+    { name: "black pepper", category: "spice" },
+    { name: "salt", category: "spice" },
+    { name: "garlic powder", category: "spice" },
+    { name: "onion powder", category: "spice" },
+    { name: "paprika", category: "spice" },
+    { name: "cumin", category: "spice" },
+    { name: "coriander", category: "spice" },
+    { name: "turmeric", category: "spice" },
+    { name: "ginger", category: "spice" },
+    { name: "cinnamon", category: "spice" },
+    { name: "nutmeg", category: "spice" },
+    { name: "cloves", category: "spice" },
+    { name: "cardamom", category: "spice" },
+    { name: "star anise", category: "spice" },
+    { name: "bay leaves", category: "spice" },
+    { name: "chili powder", category: "spice" },
+    { name: "cayenne pepper", category: "spice" },
+    { name: "red pepper flakes", category: "spice" },
+    { name: "curry powder", category: "spice" },
+    { name: "garam masala", category: "spice" },
+    { name: "saffron", category: "spice" },
+
+    // Sauces & Condiments
+    { name: "soy sauce", category: "sauce" },
+    { name: "oyster sauce", category: "sauce" },
+    { name: "fish sauce", category: "sauce" },
+    { name: "teriyaki sauce", category: "sauce" },
+    { name: "tomato sauce", category: "sauce" },
+    { name: "enchilada sauce", category: "sauce" },
+    { name: "bbq sauce", category: "sauce" },
+    { name: "hot sauce", category: "sauce" },
+    { name: "sriracha", category: "sauce" },
+    { name: "ketchup", category: "sauce" },
+    { name: "mustard", category: "sauce" },
+    { name: "mayonnaise", category: "sauce" },
+    { name: "worcestershire sauce", category: "sauce" },
+    { name: "vinegar", category: "sauce" },
+    { name: "balsamic vinegar", category: "sauce" },
+    { name: "apple cider vinegar", category: "sauce" },
+    { name: "rice vinegar", category: "sauce" },
+
+    // Oils & Fats
+    { name: "oil", category: "fat" },
+    { name: "olive oil", category: "fat" },
+    { name: "vegetable oil", category: "fat" },
+    { name: "coconut oil", category: "fat" },
+    { name: "sesame oil", category: "fat" },
+    { name: "avocado oil", category: "fat" },
+    { name: "canola oil", category: "fat" },
+    { name: "sunflower oil", category: "fat" },
+
+    // Nuts & Seeds
+    { name: "peanuts", category: "nut" },
+    { name: "almonds", category: "nut" },
+    { name: "walnuts", category: "nut" },
+    { name: "cashews", category: "nut" },
+    { name: "pecans", category: "nut" },
+    { name: "pistachios", category: "nut" },
+    { name: "hazelnuts", category: "nut" },
+    { name: "sesame seeds", category: "seed" },
+    { name: "sunflower seeds", category: "seed" },
+    { name: "pumpkin seeds", category: "seed" },
+    { name: "chia seeds", category: "seed" },
+    { name: "flax seeds", category: "seed" },
+
+    // Liquids
+    { name: "water", category: "liquid" },
+    { name: "broth", category: "liquid" },
+    { name: "chicken broth", category: "liquid" },
+    { name: "beef broth", category: "liquid" },
+    { name: "vegetable broth", category: "liquid" },
+    { name: "coconut milk", category: "liquid" },
+    { name: "almond milk", category: "liquid" },
+    { name: "oat milk", category: "liquid" },
+    { name: "wine", category: "liquid" },
+    { name: "beer", category: "liquid" },
+
+    // Special Ingredients
+    { name: "miso paste", category: "special" },
+    { name: "tahini", category: "special" },
+    { name: "gochujang", category: "special" },
+    { name: "kimchi", category: "special" },
+    { name: "seaweed", category: "special" },
+    { name: "dashi", category: "special" },
+    { name: "lemongrass", category: "special" },
+    { name: "galangal", category: "special" },
+    { name: "kaffir lime leaves", category: "special" },
+    { name: "fish sauce", category: "special" },
+    { name: "oyster sauce", category: "special" },
+    { name: "hoisin sauce", category: "special" },
+    { name: "sambal oelek", category: "special" },
+    { name: "green curry paste", category: "special" },
+    { name: "red curry paste", category: "special" },
+    { name: "yellow curry paste", category: "special" },
+    { name: "massaman curry paste", category: "special" },
+    { name: "panang curry paste", category: "special" },
+    { name: "tom yum paste", category: "special" },
+    { name: "bean sprouts", category: "special" },
+    { name: "bamboo shoots", category: "special" },
+    { name: "water chestnuts", category: "special" },
+    { name: "shiitake mushrooms", category: "special" },
+    { name: "enoki mushrooms", category: "special" },
+    { name: "oyster mushrooms", category: "special" },
+    { name: "portobello mushrooms", category: "special" },
+    { name: "nutritional yeast", category: "special" },
+    { name: "cashew cream", category: "special" },
+    { name: "coconut cream", category: "special" },
+    { name: "tamarind paste", category: "special" },
+    { name: "palm sugar", category: "special" },
+    { name: "jaggery", category: "special" },
+    { name: "ghee", category: "special" },
+    { name: "clarified butter", category: "special" }
+  ];
+
+  // Insert ingredients into database
   allIngredients.forEach(ingredient => {
-    db.run(`INSERT OR IGNORE INTO ingredients (name) VALUES (?)`, [ingredient]);
+    db.run(`INSERT OR IGNORE INTO ingredients (name, category) VALUES (?, ?)`, 
+      [ingredient.name, ingredient.category]);
   });
 }
 
@@ -989,16 +1230,107 @@ function findMissingIngredients(recipe, availableIngredients) {
 
 function getSubstitutionRecommendations(recipe, availableIngredients) {
   const substitutionMap = {
-    "chicken": ["turkey", "tofu", "fish"],
-    "beef": ["lamb", "pork", "mushrooms"],
-    "pasta": ["rice", "quinoa", "zucchini noodles"],
-    "cheese": ["nutritional yeast", "cashew cream", "avocado"],
-    "milk": ["almond milk", "coconut milk", "oat milk"],
-    "butter": ["olive oil", "coconut oil", "avocado"],
-    "eggs": ["flax eggs", "chia eggs", "applesauce"],
-    "flour": ["almond flour", "coconut flour", "oat flour"],
-    "sugar": ["honey", "maple syrup", "stevia"],
-    "oil": ["butter", "coconut oil", "avocado oil"]
+    // Protein substitutions
+    "chicken": ["turkey", "tofu", "fish", "shrimp", "tempeh"],
+    "beef": ["lamb", "pork", "mushrooms", "tofu", "tempeh"],
+    "pork": ["chicken", "turkey", "tofu", "mushrooms"],
+    "fish": ["salmon", "tuna", "shrimp", "tofu"],
+    "eggs": ["flax eggs", "chia eggs", "applesauce", "banana"],
+    "bacon": ["turkey bacon", "mushrooms", "smoked tofu"],
+    "ground beef": ["ground turkey", "ground chicken", "lentils", "mushrooms"],
+    
+    // Dairy substitutions
+    "milk": ["almond milk", "coconut milk", "oat milk", "soy milk"],
+    "cheese": ["nutritional yeast", "cashew cream", "avocado", "vegan cheese"],
+    "butter": ["olive oil", "coconut oil", "avocado", "ghee"],
+    "cream": ["coconut cream", "cashew cream", "almond milk"],
+    "yogurt": ["coconut yogurt", "almond yogurt", "cashew cream"],
+    "sour cream": ["cashew cream", "coconut cream", "greek yogurt"],
+    
+    // Grain substitutions
+    "pasta": ["rice", "quinoa", "zucchini noodles", "spaghetti squash"],
+    "rice": ["quinoa", "cauliflower rice", "barley", "bulgur"],
+    "bread": ["lettuce wraps", "tortillas", "rice cakes"],
+    "flour": ["almond flour", "coconut flour", "oat flour", "rice flour"],
+    
+    // Vegetable substitutions
+    "onion": ["scallions", "leek", "shallots", "onion powder"],
+    "garlic": ["garlic powder", "shallots", "chives"],
+    "tomato": ["tomato sauce", "sun-dried tomatoes", "cherry tomatoes"],
+    "potato": ["sweet potato", "cauliflower", "turnip"],
+    "bell pepper": ["poblano pepper", "jalapeño", "cubanelle pepper"],
+    "mushrooms": ["shiitake mushrooms", "portobello mushrooms", "oyster mushrooms"],
+    
+    // Oil substitutions
+    "olive oil": ["coconut oil", "avocado oil", "vegetable oil"],
+    "vegetable oil": ["olive oil", "coconut oil", "avocado oil"],
+    "sesame oil": ["olive oil", "coconut oil", "peanut oil"],
+    
+    // Sauce substitutions
+    "soy sauce": ["tamari", "coconut aminos", "worcestershire sauce"],
+    "fish sauce": ["soy sauce", "worcestershire sauce", "miso paste"],
+    "oyster sauce": ["hoisin sauce", "soy sauce", "teriyaki sauce"],
+    "teriyaki sauce": ["soy sauce", "hoisin sauce", "bbq sauce"],
+    "hot sauce": ["sriracha", "chili powder", "cayenne pepper"],
+    
+    // Spice substitutions
+    "ginger": ["ginger powder", "galangal", "lemongrass"],
+    "garlic": ["garlic powder", "shallots", "chives"],
+    "onion": ["onion powder", "scallions", "leek"],
+    "salt": ["sea salt", "kosher salt", "soy sauce"],
+    "black pepper": ["white pepper", "cayenne pepper", "paprika"],
+    
+    // Herb substitutions
+    "basil": ["oregano", "thyme", "parsley"],
+    "cilantro": ["parsley", "mint", "dill"],
+    "parsley": ["cilantro", "chives", "dill"],
+    "oregano": ["basil", "thyme", "marjoram"],
+    "thyme": ["oregano", "rosemary", "sage"],
+    
+    // Nut substitutions
+    "peanuts": ["almonds", "cashews", "walnuts"],
+    "almonds": ["cashews", "walnuts", "pecans"],
+    "walnuts": ["pecans", "almonds", "cashews"],
+    
+    // Legume substitutions
+    "black beans": ["kidney beans", "pinto beans", "navy beans"],
+    "chickpeas": ["white beans", "cannellini beans", "lentils"],
+    "lentils": ["split peas", "chickpeas", "black beans"],
+    
+    // Fruit substitutions
+    "lemon": ["lime", "vinegar", "citric acid"],
+    "lime": ["lemon", "vinegar", "citric acid"],
+    "apple": ["pear", "peach", "banana"],
+    "banana": ["apple", "pear", "applesauce"],
+    
+    // Special substitutions
+    "miso paste": ["soy sauce", "tamari", "nutritional yeast"],
+    "tahini": ["peanut butter", "almond butter", "cashew butter"],
+    "kimchi": ["sauerkraut", "pickled vegetables", "fermented vegetables"],
+    "gochujang": ["sriracha", "hot sauce", "chili paste"],
+    "coconut milk": ["almond milk", "oat milk", "heavy cream"],
+    "coconut cream": ["heavy cream", "cashew cream", "coconut milk"],
+    
+    // Sweetener substitutions
+    "sugar": ["honey", "maple syrup", "agave", "stevia"],
+    "honey": ["maple syrup", "agave", "brown sugar"],
+    "maple syrup": ["honey", "agave", "brown sugar"],
+    "brown sugar": ["white sugar", "honey", "maple syrup"],
+    
+    // Vinegar substitutions
+    "balsamic vinegar": ["red wine vinegar", "apple cider vinegar", "lemon juice"],
+    "rice vinegar": ["white vinegar", "apple cider vinegar", "lemon juice"],
+    "apple cider vinegar": ["white vinegar", "rice vinegar", "lemon juice"],
+    
+    // Broth substitutions
+    "chicken broth": ["vegetable broth", "beef broth", "water"],
+    "beef broth": ["chicken broth", "vegetable broth", "water"],
+    "vegetable broth": ["chicken broth", "water", "bouillon"],
+    
+    // Wine substitutions
+    "wine": ["broth", "vinegar", "lemon juice"],
+    "red wine": ["beef broth", "balsamic vinegar", "tomato juice"],
+    "white wine": ["chicken broth", "white vinegar", "lemon juice"]
   };
   
   const missingIngredients = findMissingIngredients(recipe, availableIngredients);
