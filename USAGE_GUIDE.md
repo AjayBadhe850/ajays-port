@@ -282,6 +282,6 @@ salmon + asparagus + lemon + dill + butter + white wine + garlic + onion
 
 ---
 
-**© 2024 [Ajay Badhe](https://github.com/AjayBadhe850)** - *FlavorGraph: Intelligent Recipe Navigator* 🧠✨
+**[Ajay Badhe](https://github.com/AjayBadhe850)** - *FlavorGraph: Intelligent Recipe Navigator* 🧠✨
 
 *Powered by Graph Theory, Backtracking & Greedy Algorithms*
