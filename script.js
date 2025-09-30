@@ -484,41 +484,24 @@ class FlavorGraph {
         const results = [];
         const visited = new Set();
 
-        const backtrack = (currentIngredients, currentRecipes, depth) => {
-            if (currentRecipes.length >= targetRecipeCount || depth > 10) {
-                return;
+        // Simple approach: find all recipes with any matching ingredients
+        for (const recipe of this.recipeDatabase) {
+            const matchScore = this.calculateMatchScore(recipe, availableIngredients);
+            if (matchScore > 0) {
+                results.push({
+                    ...recipe,
+                    matchScore,
+                    missingIngredients: this.findMissingIngredients(recipe, availableIngredients)
+                });
             }
+        }
 
-            for (const recipe of this.recipeDatabase) {
-                if (visited.has(recipe.id)) continue;
-
-                const matchScore = this.calculateMatchScore(recipe, currentIngredients);
-                if (matchScore > 0) {
-                    visited.add(recipe.id);
-                    currentRecipes.push({
-                        ...recipe,
-                        matchScore,
-                        missingIngredients: this.findMissingIngredients(recipe, currentIngredients)
-                    });
-                    
-                    // Recursive call
-                    backtrack(currentIngredients, currentRecipes, depth + 1);
-                    
-                    // Backtrack
-                    currentRecipes.pop();
-                    visited.delete(recipe.id);
-                }
-            }
-        };
-
-        backtrack(availableIngredients, results, 0);
-        return results.sort((a, b) => b.matchScore - a.matchScore);
+        return results.sort((a, b) => b.matchScore - a.matchScore).slice(0, targetRecipeCount);
     }
 
     // Greedy algorithm for optimal ingredient usage
     findRecipesWithGreedy(availableIngredients) {
         const results = [];
-        const usedIngredients = new Set();
         const remainingRecipes = [...this.recipeDatabase];
 
         // Sort recipes by potential score (greedy choice)
@@ -529,34 +512,13 @@ class FlavorGraph {
         });
 
         for (const recipe of remainingRecipes) {
-            const recipeIngredients = new Set(recipe.ingredients);
-            const availableSet = new Set(availableIngredients);
-            
-            // Check if we can make this recipe
-            const canMake = [...recipeIngredients].every(ingredient => 
-                availableSet.has(ingredient) && !usedIngredients.has(ingredient)
-            );
-
-            if (canMake) {
-                // Mark ingredients as used
-                recipeIngredients.forEach(ingredient => usedIngredients.add(ingredient));
-                
+            const matchScore = this.calculateMatchScore(recipe, availableIngredients);
+            if (matchScore > 0) {
                 results.push({
                     ...recipe,
-                    matchScore: 100,
-                    missingIngredients: [],
-                    usedIngredients: [...recipeIngredients]
+                    matchScore,
+                    missingIngredients: this.findMissingIngredients(recipe, availableIngredients)
                 });
-            } else {
-                // Calculate partial match
-                const matchScore = this.calculateMatchScore(recipe, availableIngredients);
-                if (matchScore > 30) {
-                    results.push({
-                        ...recipe,
-                        matchScore,
-                        missingIngredients: this.findMissingIngredients(recipe, availableIngredients)
-                    });
-                }
             }
         }
 
@@ -593,7 +555,14 @@ class FlavorGraph {
         // Calculate percentage
         const totalScore = ingredientScore + score;
         const maxPossible = recipeIngredients.size * 20;
-        return Math.min(100, Math.round((totalScore / maxPossible) * 100));
+        const finalScore = Math.min(100, Math.round((totalScore / maxPossible) * 100));
+        
+        // Debug logging
+        if (finalScore > 0) {
+            console.log(`Recipe "${recipe.name}" score: ${finalScore}% (${ingredientScore} + ${score})`);
+        }
+        
+        return finalScore;
     }
 
     // Greedy scoring function
@@ -725,6 +694,9 @@ class FlavorGraph {
         
         try {
             const availableIngredients = [...this.ingredients];
+            console.log('Searching with ingredients:', availableIngredients);
+            console.log('Recipe database size:', this.recipeDatabase.length);
+            
             const response = await fetch(`${this.apiBaseUrl}/recipes/search`, {
                 method: 'POST',
                 headers: {
@@ -735,13 +707,16 @@ class FlavorGraph {
 
             if (response.ok) {
                 const results = await response.json();
+                console.log('API results:', results);
                 this.displayResults(results, availableIngredients);
             } else {
+                console.log('API failed, using local algorithms');
                 // Fallback to local algorithms
                 const backtrackingResults = this.findRecipesWithBacktracking(availableIngredients);
                 const greedyResults = this.findRecipesWithGreedy(availableIngredients);
                 const allResults = [...backtrackingResults, ...greedyResults];
                 const uniqueResults = this.deduplicateResults(allResults);
+                console.log('Local algorithm results:', uniqueResults);
                 this.displayResults(uniqueResults, availableIngredients);
             }
         } catch (error) {
@@ -752,6 +727,7 @@ class FlavorGraph {
             const greedyResults = this.findRecipesWithGreedy(availableIngredients);
             const allResults = [...backtrackingResults, ...greedyResults];
             const uniqueResults = this.deduplicateResults(allResults);
+            console.log('Error fallback results:', uniqueResults);
             this.displayResults(uniqueResults, availableIngredients);
         }
     }
