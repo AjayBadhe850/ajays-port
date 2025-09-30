@@ -215,14 +215,43 @@ const results = await testSuite.runAllTests();
 - **Reliability**: Graceful error handling and fallback mechanisms
 - **Scalability**: Efficient algorithms handling large datasets
 
-## 🎮 How to Use
+## 🎮 Quick Start Guide
 
-1. **Add Ingredients**: Type ingredient names and click "Add" or press Enter
-2. **Find Recipes**: Click "Find Recipes" to get algorithmic suggestions
-3. **View Results**: Browse through three tabs:
-   - **Recipes**: See suggested recipes with match scores
-   - **Missing Ingredients**: Analyze what you need for each recipe
-   - **Substitutions**: Get alternative ingredient recommendations
+### **Live Demo**: [https://ajaybadhe850.github.io/ajays-port/](https://ajaybadhe850.github.io/ajays-port/)
+
+### **Step-by-Step Example:**
+
+#### **1. Add Ingredients**
+```
+Type: chicken
+Click: Add
+Type: onion  
+Click: Add
+Type: garlic
+Click: Add
+```
+
+#### **2. Find Recipes**
+```
+Click: "Find Recipes" button
+Wait: 1-2 seconds for algorithms to process
+```
+
+#### **3. View Results**
+- **Recipes Tab**: See Chicken Stir Fry (100%), Chicken Parmesan (60%)
+- **Missing Ingredients Tab**: Shows what you need for each recipe
+- **Substitutions Tab**: Suggests alternatives for missing ingredients
+
+### **Example Results:**
+- ✅ **Chicken Stir Fry** (100% match) - Perfect!
+- ✅ **Chicken Parmesan** (60% match) - Need breadcrumbs, eggs, cheese
+- ✅ **Chicken Fried Rice** (80% match) - Need rice, eggs, soy sauce
+
+### **Pro Tips:**
+- Start with protein: `chicken`, `beef`, `fish`, `tofu`
+- Add vegetables: `onion`, `garlic`, `tomato`, `bell pepper`
+- Include staples: `oil`, `salt`, `pepper`, `flour`
+- Check substitutions for missing ingredients
 
 ## 📈 Performance Features
 

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorGraph Demo - Quick Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .demo-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .demo-button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .demo-button:hover {
+            background: #5a6fd8;
+        }
+        .example-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin: 10px 0;
+        }
+        .ingredient-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .ingredient-tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        .result-box {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .score {
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍽️ FlavorGraph Demo - Quick Test Examples</h1>
+    
+    <div class="demo-section">
+        <h2>🚀 Quick Start</h2>
+        <p>Visit the live FlavorGraph website and try these examples:</p>
+        <a href="https://ajaybadhe850.github.io/ajays-port/" target="_blank" class="demo-button">
+            Open FlavorGraph Website
+        </a>
+    </div>
+
+    <div class="demo-section">
+        <h2>📋 Example 1: Italian Cuisine</h2>
+        <div class="example-box">
+            <h3>Ingredients to Add:</h3>
+            <div class="ingredient-list">
+                <span class="ingredient-tag">pasta</span>
+                <span class="ingredient-tag">eggs</span>
+                <span class="ingredient-tag">bacon</span>
+                <span class="ingredient-tag">parmesan</span>
+            </div>
+            <h3>Expected Results:</h3>
+            <div class="result-box">
+                <p><span class="score">100%</span> - Classic Spaghetti Carbonara (Perfect match!)</p>
+                <p><span class="score">60%</span> - Pasta Primavera (Need broccoli, carrot)</p>
+                <p><span class="score">40%</span> - Chicken Parmesan (Need chicken, breadcrumbs)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🌮 Example 2: Mexican Cuisine</h2>
+        <div class="example-box">
+            <h3>Ingredients to Add:</h3>
+            <div class="ingredient-list">
+                <span class="ingredient-tag">ground beef</span>
+                <span class="ingredient-tag">tortillas</span>
+                <span class="ingredient-tag">lettuce</span>
+                <span class="ingredient-tag">tomato</span>
+                <span class="ingredient-tag">cheese</span>
+                <span class="ingredient-tag">onion</span>
+            </div>
+            <h3>Expected Results:</h3>
+            <div class="result-box">
+                <p><span class="score">100%</span> - Beef Tacos (Perfect match!)</p>
+                <p><span class="score">80%</span> - Beef Burritos (Need rice, beans)</p>
+                <p><span class="score">60%</span> - Chicken Quesadillas (Need chicken, bell pepper)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🥢 Example 3: Asian Cuisine</h2>
+        <div class="example-box">
+            <h3>Ingredients to Add:</h3>
+            <div class="ingredient-list">
+                <span class="ingredient-tag">chicken</span>
+                <span class="ingredient-tag">bell pepper</span>
+                <span class="ingredient-tag">onion</span>
+                <span class="ingredient-tag">garlic</span>
+                <span class="ingredient-tag">soy sauce</span>
+                <span class="ingredient-tag">oil</span>
+            </div>
+            <h3>Expected Results:</h3>
+            <div class="result-box">
+                <p><span class="score">100%</span> - Chicken Stir Fry (Perfect match!)</p>
+                <p><span class="score">80%</span> - Chicken Fried Rice (Need rice, eggs)</p>
+                <p><span class="score">60%</span> - Beef and Broccoli (Need beef, broccoli)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🥗 Example 4: Vegetarian Options</h2>
+        <div class="example-box">
+            <h3>Ingredients to Add:</h3>
+            <div class="ingredient-list">
+                <span class="ingredient-tag">beans</span>
+                <span class="ingredient-tag">tomato</span>
+                <span class="ingredient-tag">onion</span>
+                <span class="ingredient-tag">bell pepper</span>
+                <span class="ingredient-tag">chili powder</span>
+                <span class="ingredient-tag">garlic</span>
+            </div>
+            <h3>Expected Results:</h3>
+            <div class="result-box">
+                <p><span class="score">100%</span> - Vegetarian Chili (Perfect match!)</p>
+                <p><span class="score">60%</span> - Veggie Burger (Need oats, spices)</p>
+                <p><span class="score">40%</span> - Quinoa Salad (Need quinoa, cucumber)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🔍 Example 5: Limited Ingredients Challenge</h2>
+        <div class="example-box">
+            <h3>Only These Ingredients:</h3>
+            <div class="ingredient-list">
+                <span class="ingredient-tag">chicken</span>
+                <span class="ingredient-tag">onion</span>
+                <span class="ingredient-tag">garlic</span>
+                <span class="ingredient-tag">olive oil</span>
+                <span class="ingredient-tag">salt</span>
+            </div>
+            <h3>What Happens:</h3>
+            <div class="result-box">
+                <p>✅ Multiple recipes found with partial matches</p>
+                <p>✅ Gap analysis shows missing ingredients</p>
+                <p>✅ Substitution suggestions provided</p>
+                <p><strong>Example Substitutions:</strong></p>
+                <p>• Missing butter? → Use olive oil</p>
+                <p>• Missing pepper? → Use salt or garlic powder</p>
+                <p>• Missing cheese? → Use nutritional yeast</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🎯 Pro Tips for Best Results</h2>
+        <div class="example-box">
+            <h3>1. Start with Protein</h3>
+            <p>Add your main protein first: chicken, beef, fish, tofu</p>
+            
+            <h3>2. Add Common Vegetables</h3>
+            <p>Include basics: onion, garlic, tomato, bell pepper</p>
+            
+            <h3>3. Include Pantry Staples</h3>
+            <p>Add: oil, salt, pepper, flour, rice</p>
+            
+            <h3>4. Use Specific Ingredients</h3>
+            <p>Instead of "cheese" → try "mozzarella", "parmesan", "cheddar"</p>
+            
+            <h3>5. Check Substitutions Tab</h3>
+            <p>Find creative alternatives for missing ingredients</p>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🧮 Understanding the Algorithms</h2>
+        <div class="example-box">
+            <h3>Graph Theory</h3>
+            <p>Analyzes ingredient relationships and compatibility</p>
+            
+            <h3>Backtracking</h3>
+            <p>Systematically explores all recipe possibilities</p>
+            
+            <h3>Greedy</h3>
+            <p>Makes efficient decisions for quick results</p>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>📊 Reading Match Scores</h2>
+        <div class="example-box">
+            <p><span class="score">100%</span> - You have all ingredients (Perfect!)</p>
+            <p><span class="score">80-99%</span> - Missing 1-2 ingredients (Great!)</p>
+            <p><span class="score">60-79%</span> - Missing 2-3 ingredients (Good!)</p>
+            <p><span class="score">40-59%</span> - Missing 3-4 ingredients (Possible)</p>
+            <p><span class="score">20-39%</span> - Missing most ingredients (Check substitutions)</p>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🚀 Ready to Start?</h2>
+        <p>Click the button below to open FlavorGraph and try these examples:</p>
+        <a href="https://ajaybadhe850.github.io/ajays-port/" target="_blank" class="demo-button">
+            🍽️ Open FlavorGraph Now
+        </a>
+        <p><em>Remember: Add ingredients one by one, then click "Find Recipes" to see the magic happen!</em></p>
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; color: #666;">
+        <p>FlavorGraph - Intelligent Recipe Navigator with Algorithmic Insights</p>
+        <p>Powered by Graph Theory, Backtracking, and Greedy Algorithms</p>
+    </footer>
+</body>
+</html>
