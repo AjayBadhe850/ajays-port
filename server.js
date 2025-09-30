@@ -87,6 +87,7 @@ function initializeDatabase() {
 // Insert sample recipes and ingredients
 function insertSampleData() {
   const sampleRecipes = [
+    // Italian Cuisine
     {
       name: "Classic Spaghetti Carbonara",
       ingredients: ["pasta", "eggs", "bacon", "parmesan", "black pepper"],
@@ -96,6 +97,48 @@ function insertSampleData() {
       cuisine: "italian"
     },
     {
+      name: "Margherita Pizza",
+      ingredients: ["pizza dough", "tomato sauce", "mozzarella", "basil", "olive oil"],
+      instructions: "Roll dough, add sauce and cheese, bake until golden",
+      difficulty: "medium",
+      time: 40,
+      cuisine: "italian"
+    },
+    {
+      name: "Pasta Primavera",
+      ingredients: ["pasta", "broccoli", "carrot", "bell pepper", "garlic", "olive oil"],
+      instructions: "Cook pasta, sauté vegetables, combine with pasta",
+      difficulty: "easy",
+      time: 25,
+      cuisine: "italian"
+    },
+    {
+      name: "Chicken Parmesan",
+      ingredients: ["chicken breast", "breadcrumbs", "eggs", "tomato sauce", "mozzarella", "parmesan"],
+      instructions: "Bread chicken, fry until golden, top with sauce and cheese, bake",
+      difficulty: "medium",
+      time: 45,
+      cuisine: "italian"
+    },
+    {
+      name: "Risotto Milanese",
+      ingredients: ["arborio rice", "chicken broth", "onion", "saffron", "parmesan", "butter"],
+      instructions: "Sauté rice with onion, add broth gradually, finish with saffron and cheese",
+      difficulty: "hard",
+      time: 50,
+      cuisine: "italian"
+    },
+    {
+      name: "Lasagna",
+      ingredients: ["lasagna noodles", "ground beef", "ricotta", "mozzarella", "tomato sauce", "onion"],
+      instructions: "Layer noodles, meat sauce, and cheeses, bake until bubbly",
+      difficulty: "medium",
+      time: 60,
+      cuisine: "italian"
+    },
+
+    // Asian Cuisine
+    {
       name: "Chicken Stir Fry",
       ingredients: ["chicken", "bell pepper", "onion", "garlic", "soy sauce", "oil"],
       instructions: "Cut chicken and vegetables, stir fry in hot oil with soy sauce",
@@ -103,6 +146,56 @@ function insertSampleData() {
       time: 20,
       cuisine: "asian"
     },
+    {
+      name: "Beef and Broccoli",
+      ingredients: ["beef", "broccoli", "garlic", "ginger", "soy sauce", "oyster sauce"],
+      instructions: "Marinate beef, stir fry with broccoli and sauce",
+      difficulty: "easy",
+      time: 25,
+      cuisine: "asian"
+    },
+    {
+      name: "Chicken Fried Rice",
+      ingredients: ["rice", "chicken", "eggs", "peas", "carrot", "soy sauce", "oil"],
+      instructions: "Cook rice, scramble eggs, stir fry with chicken and vegetables",
+      difficulty: "easy",
+      time: 30,
+      cuisine: "asian"
+    },
+    {
+      name: "Sweet and Sour Pork",
+      ingredients: ["pork", "bell pepper", "pineapple", "vinegar", "sugar", "soy sauce"],
+      instructions: "Fry pork, add vegetables and sweet-sour sauce",
+      difficulty: "medium",
+      time: 35,
+      cuisine: "asian"
+    },
+    {
+      name: "Pad Thai",
+      ingredients: ["rice noodles", "shrimp", "eggs", "bean sprouts", "peanuts", "fish sauce"],
+      instructions: "Soak noodles, stir fry with shrimp, eggs, and sauce",
+      difficulty: "medium",
+      time: 30,
+      cuisine: "asian"
+    },
+    {
+      name: "Teriyaki Chicken",
+      ingredients: ["chicken", "teriyaki sauce", "garlic", "ginger", "sesame oil"],
+      instructions: "Marinate chicken, grill or pan-fry with teriyaki sauce",
+      difficulty: "easy",
+      time: 25,
+      cuisine: "asian"
+    },
+    {
+      name: "Miso Soup",
+      ingredients: ["miso paste", "tofu", "seaweed", "green onions", "dashi"],
+      instructions: "Heat dashi, dissolve miso, add tofu and seaweed",
+      difficulty: "easy",
+      time: 15,
+      cuisine: "asian"
+    },
+
+    // Mexican Cuisine
     {
       name: "Beef Tacos",
       ingredients: ["ground beef", "tortillas", "lettuce", "tomato", "cheese", "onion"],
@@ -112,6 +205,40 @@ function insertSampleData() {
       cuisine: "mexican"
     },
     {
+      name: "Chicken Quesadillas",
+      ingredients: ["chicken", "tortillas", "cheese", "bell pepper", "onion", "oil"],
+      instructions: "Cook chicken and vegetables, assemble in tortillas, grill",
+      difficulty: "easy",
+      time: 20,
+      cuisine: "mexican"
+    },
+    {
+      name: "Beef Burritos",
+      ingredients: ["ground beef", "tortillas", "rice", "beans", "cheese", "sour cream"],
+      instructions: "Cook beef with spices, wrap in tortillas with rice and beans",
+      difficulty: "easy",
+      time: 30,
+      cuisine: "mexican"
+    },
+    {
+      name: "Chicken Enchiladas",
+      ingredients: ["chicken", "tortillas", "enchilada sauce", "cheese", "onion"],
+      instructions: "Shred chicken, roll in tortillas, top with sauce and cheese, bake",
+      difficulty: "medium",
+      time: 45,
+      cuisine: "mexican"
+    },
+    {
+      name: "Guacamole",
+      ingredients: ["avocado", "lime", "tomato", "onion", "cilantro", "salt"],
+      instructions: "Mash avocado, mix with lime juice and chopped vegetables",
+      difficulty: "easy",
+      time: 10,
+      cuisine: "mexican"
+    },
+
+    // Indian Cuisine
+    {
       name: "Vegetable Curry",
       ingredients: ["potato", "carrot", "onion", "coconut milk", "curry powder", "garlic"],
       instructions: "Sauté vegetables, add curry powder and coconut milk, simmer",
@@ -120,12 +247,372 @@ function insertSampleData() {
       cuisine: "indian"
     },
     {
+      name: "Chicken Tikka Masala",
+      ingredients: ["chicken", "yogurt", "tomato sauce", "garlic", "ginger", "garam masala"],
+      instructions: "Marinate chicken, grill, simmer in tomato-based sauce",
+      difficulty: "medium",
+      time: 50,
+      cuisine: "indian"
+    },
+    {
+      name: "Dal Tadka",
+      ingredients: ["lentils", "onion", "garlic", "cumin", "turmeric", "oil"],
+      instructions: "Cook lentils, temper with spices and onions",
+      difficulty: "easy",
+      time: 30,
+      cuisine: "indian"
+    },
+    {
+      name: "Biryani",
+      ingredients: ["rice", "chicken", "onion", "garlic", "ginger", "saffron", "yogurt"],
+      instructions: "Marinate chicken, layer with rice, cook on low heat",
+      difficulty: "hard",
+      time: 60,
+      cuisine: "indian"
+    },
+    {
+      name: "Naan Bread",
+      ingredients: ["flour", "yogurt", "yeast", "garlic", "butter", "salt"],
+      instructions: "Make dough, roll flat, cook on hot griddle",
+      difficulty: "medium",
+      time: 40,
+      cuisine: "indian"
+    },
+
+    // American Cuisine
+    {
       name: "Caesar Salad",
       ingredients: ["lettuce", "croutons", "parmesan", "lemon", "garlic", "olive oil"],
       instructions: "Mix lettuce with dressing, add croutons and parmesan",
       difficulty: "easy",
       time: 15,
       cuisine: "american"
+    },
+    {
+      name: "Beef Burger",
+      ingredients: ["ground beef", "burger bun", "lettuce", "tomato", "onion", "cheese"],
+      instructions: "Form patties, grill beef, assemble burger with toppings",
+      difficulty: "easy",
+      time: 20,
+      cuisine: "american"
+    },
+    {
+      name: "Chicken Noodle Soup",
+      ingredients: ["chicken", "noodles", "carrot", "celery", "onion", "garlic"],
+      instructions: "Simmer chicken, add vegetables and noodles",
+      difficulty: "easy",
+      time: 30,
+      cuisine: "american"
+    },
+    {
+      name: "Mac and Cheese",
+      ingredients: ["pasta", "cheese", "milk", "butter", "flour", "breadcrumbs"],
+      instructions: "Make cheese sauce, mix with pasta, top with breadcrumbs, bake",
+      difficulty: "easy",
+      time: 35,
+      cuisine: "american"
+    },
+    {
+      name: "BBQ Ribs",
+      ingredients: ["pork ribs", "bbq sauce", "garlic", "onion", "brown sugar"],
+      instructions: "Season ribs, slow cook, glaze with BBQ sauce",
+      difficulty: "medium",
+      time: 120,
+      cuisine: "american"
+    },
+    {
+      name: "Buffalo Wings",
+      ingredients: ["chicken wings", "hot sauce", "butter", "garlic", "celery"],
+      instructions: "Fry wings, toss in hot sauce mixture, serve with celery",
+      difficulty: "easy",
+      time: 25,
+      cuisine: "american"
+    },
+
+    // Mediterranean Cuisine
+    {
+      name: "Greek Salad",
+      ingredients: ["tomato", "cucumber", "olives", "feta cheese", "olive oil", "oregano"],
+      instructions: "Chop vegetables, mix with feta and dressing",
+      difficulty: "easy",
+      time: 15,
+      cuisine: "mediterranean"
+    },
+    {
+      name: "Hummus",
+      ingredients: ["chickpeas", "tahini", "lemon", "garlic", "olive oil", "cumin"],
+      instructions: "Blend chickpeas with tahini, lemon, and spices",
+      difficulty: "easy",
+      time: 15,
+      cuisine: "mediterranean"
+    },
+    {
+      name: "Falafel",
+      ingredients: ["chickpeas", "onion", "garlic", "parsley", "cumin", "flour"],
+      instructions: "Blend ingredients, form balls, deep fry",
+      difficulty: "medium",
+      time: 40,
+      cuisine: "mediterranean"
+    },
+    {
+      name: "Tabbouleh",
+      ingredients: ["bulgur", "tomato", "parsley", "mint", "lemon", "olive oil"],
+      instructions: "Soak bulgur, mix with chopped herbs and vegetables",
+      difficulty: "easy",
+      time: 20,
+      cuisine: "mediterranean"
+    },
+
+    // French Cuisine
+    {
+      name: "Coq au Vin",
+      ingredients: ["chicken", "wine", "bacon", "mushrooms", "onion", "garlic"],
+      instructions: "Brown chicken, simmer in wine with vegetables",
+      difficulty: "hard",
+      time: 90,
+      cuisine: "french"
+    },
+    {
+      name: "Ratatouille",
+      ingredients: ["eggplant", "zucchini", "tomato", "bell pepper", "onion", "herbs"],
+      instructions: "Sauté vegetables separately, combine and simmer",
+      difficulty: "medium",
+      time: 45,
+      cuisine: "french"
+    },
+    {
+      name: "French Onion Soup",
+      ingredients: ["onions", "beef broth", "cheese", "bread", "butter", "thyme"],
+      instructions: "Caramelize onions, add broth, top with bread and cheese, broil",
+      difficulty: "medium",
+      time: 60,
+      cuisine: "french"
+    },
+
+    // Thai Cuisine
+    {
+      name: "Green Curry",
+      ingredients: ["chicken", "green curry paste", "coconut milk", "eggplant", "basil", "fish sauce"],
+      instructions: "Cook curry paste, add coconut milk and chicken, simmer",
+      difficulty: "medium",
+      time: 30,
+      cuisine: "thai"
+    },
+    {
+      name: "Tom Yum Soup",
+      ingredients: ["shrimp", "lemongrass", "lime", "chili", "mushrooms", "fish sauce"],
+      instructions: "Simmer broth with aromatics, add shrimp and vegetables",
+      difficulty: "medium",
+      time: 25,
+      cuisine: "thai"
+    },
+    {
+      name: "Pad See Ew",
+      ingredients: ["rice noodles", "beef", "broccoli", "soy sauce", "garlic", "eggs"],
+      instructions: "Stir fry noodles with beef and vegetables in soy sauce",
+      difficulty: "medium",
+      time: 25,
+      cuisine: "thai"
+    },
+
+    // Chinese Cuisine
+    {
+      name: "Kung Pao Chicken",
+      ingredients: ["chicken", "peanuts", "bell pepper", "chili", "soy sauce", "vinegar"],
+      instructions: "Stir fry chicken with vegetables and peanuts in spicy sauce",
+      difficulty: "medium",
+      time: 25,
+      cuisine: "chinese"
+    },
+    {
+      name: "Sweet and Sour Chicken",
+      ingredients: ["chicken", "bell pepper", "pineapple", "vinegar", "sugar", "ketchup"],
+      instructions: "Fry chicken, add vegetables and sweet-sour sauce",
+      difficulty: "medium",
+      time: 30,
+      cuisine: "chinese"
+    },
+    {
+      name: "Chow Mein",
+      ingredients: ["noodles", "chicken", "cabbage", "carrot", "soy sauce", "garlic"],
+      instructions: "Stir fry noodles with chicken and vegetables",
+      difficulty: "easy",
+      time: 20,
+      cuisine: "chinese"
+    },
+
+    // Japanese Cuisine
+    {
+      name: "Chicken Teriyaki",
+      ingredients: ["chicken", "teriyaki sauce", "garlic", "ginger", "sesame seeds"],
+      instructions: "Marinate chicken, grill with teriyaki sauce",
+      difficulty: "easy",
+      time: 25,
+      cuisine: "japanese"
+    },
+    {
+      name: "Tempura",
+      ingredients: ["shrimp", "flour", "eggs", "oil", "dipping sauce", "vegetables"],
+      instructions: "Make batter, coat shrimp and vegetables, deep fry",
+      difficulty: "medium",
+      time: 30,
+      cuisine: "japanese"
+    },
+    {
+      name: "Ramen",
+      ingredients: ["ramen noodles", "pork", "eggs", "green onions", "miso", "seaweed"],
+      instructions: "Make broth, cook noodles, top with pork and eggs",
+      difficulty: "medium",
+      time: 40,
+      cuisine: "japanese"
+    },
+
+    // Korean Cuisine
+    {
+      name: "Bulgogi",
+      ingredients: ["beef", "soy sauce", "garlic", "ginger", "sesame oil", "pear"],
+      instructions: "Marinate beef, grill or pan-fry",
+      difficulty: "easy",
+      time: 30,
+      cuisine: "korean"
+    },
+    {
+      name: "Kimchi Fried Rice",
+      ingredients: ["rice", "kimchi", "eggs", "green onions", "soy sauce", "oil"],
+      instructions: "Stir fry rice with kimchi, top with fried egg",
+      difficulty: "easy",
+      time: 20,
+      cuisine: "korean"
+    },
+    {
+      name: "Bibimbap",
+      ingredients: ["rice", "beef", "vegetables", "eggs", "gochujang", "sesame oil"],
+      instructions: "Arrange rice with vegetables and beef, top with egg",
+      difficulty: "medium",
+      time: 35,
+      cuisine: "korean"
+    },
+
+    // British Cuisine
+    {
+      name: "Fish and Chips",
+      ingredients: ["fish", "potato", "flour", "oil", "lemon", "salt"],
+      instructions: "Batter fish, deep fry with chips",
+      difficulty: "medium",
+      time: 45,
+      cuisine: "british"
+    },
+    {
+      name: "Shepherd's Pie",
+      ingredients: ["ground lamb", "potato", "onion", "carrot", "peas", "gravy"],
+      instructions: "Cook meat with vegetables, top with mashed potatoes, bake",
+      difficulty: "medium",
+      time: 60,
+      cuisine: "british"
+    },
+    {
+      name: "Bangers and Mash",
+      ingredients: ["sausages", "potato", "onion", "gravy", "butter", "milk"],
+      instructions: "Cook sausages, make mashed potatoes, serve with onion gravy",
+      difficulty: "easy",
+      time: 30,
+      cuisine: "british"
+    },
+
+    // Spanish Cuisine
+    {
+      name: "Paella",
+      ingredients: ["rice", "chicken", "shrimp", "saffron", "bell pepper", "onion"],
+      instructions: "Sauté rice, add broth and seafood, cook until rice is tender",
+      difficulty: "hard",
+      time: 50,
+      cuisine: "spanish"
+    },
+    {
+      name: "Gazpacho",
+      ingredients: ["tomato", "cucumber", "bell pepper", "onion", "garlic", "olive oil"],
+      instructions: "Blend vegetables with olive oil, chill and serve",
+      difficulty: "easy",
+      time: 20,
+      cuisine: "spanish"
+    },
+    {
+      name: "Tortilla Española",
+      ingredients: ["potato", "eggs", "onion", "olive oil", "salt"],
+      instructions: "Cook potatoes and onions, mix with eggs, cook in pan",
+      difficulty: "medium",
+      time: 40,
+      cuisine: "spanish"
+    },
+
+    // German Cuisine
+    {
+      name: "Schnitzel",
+      ingredients: ["pork", "breadcrumbs", "eggs", "flour", "oil", "lemon"],
+      instructions: "Bread pork cutlets, pan-fry until golden",
+      difficulty: "medium",
+      time: 30,
+      cuisine: "german"
+    },
+    {
+      name: "Sauerkraut",
+      ingredients: ["cabbage", "salt", "caraway seeds", "apple", "onion"],
+      instructions: "Ferment cabbage with salt and spices",
+      difficulty: "easy",
+      time: 480,
+      cuisine: "german"
+    },
+
+    // Brazilian Cuisine
+    {
+      name: "Feijoada",
+      ingredients: ["black beans", "pork", "sausage", "onion", "garlic", "bay leaves"],
+      instructions: "Slow cook beans with meat and spices",
+      difficulty: "medium",
+      time: 180,
+      cuisine: "brazilian"
+    },
+    {
+      name: "Pão de Açúcar",
+      ingredients: ["flour", "eggs", "sugar", "butter", "yeast", "milk"],
+      instructions: "Make sweet bread dough, shape and bake",
+      difficulty: "medium",
+      time: 90,
+      cuisine: "brazilian"
+    },
+
+    // Vegetarian/Vegan Options
+    {
+      name: "Vegetarian Chili",
+      ingredients: ["beans", "tomato", "onion", "bell pepper", "chili powder", "garlic"],
+      instructions: "Sauté vegetables, add beans and spices, simmer",
+      difficulty: "easy",
+      time: 40,
+      cuisine: "vegetarian"
+    },
+    {
+      name: "Quinoa Salad",
+      ingredients: ["quinoa", "cucumber", "tomato", "onion", "lemon", "olive oil"],
+      instructions: "Cook quinoa, mix with vegetables and dressing",
+      difficulty: "easy",
+      time: 25,
+      cuisine: "vegetarian"
+    },
+    {
+      name: "Veggie Burger",
+      ingredients: ["black beans", "oats", "onion", "garlic", "spices", "egg"],
+      instructions: "Mash beans, mix with oats and spices, form patties, cook",
+      difficulty: "medium",
+      time: 35,
+      cuisine: "vegetarian"
+    },
+    {
+      name: "Stuffed Bell Peppers",
+      ingredients: ["bell pepper", "rice", "tomato", "onion", "cheese", "herbs"],
+      instructions: "Hollow peppers, stuff with rice mixture, bake",
+      difficulty: "medium",
+      time: 50,
+      cuisine: "vegetarian"
     }
   ];
 

@@ -34,6 +34,7 @@ class FlavorGraph {
     // Fallback recipes if API is not available
     loadFallbackRecipes() {
         this.recipeDatabase = [
+            // Italian Cuisine
             {
                 id: 1,
                 name: "Classic Spaghetti Carbonara",
@@ -44,6 +45,24 @@ class FlavorGraph {
             },
             {
                 id: 2,
+                name: "Margherita Pizza",
+                ingredients: ["pizza dough", "tomato sauce", "mozzarella", "basil", "olive oil"],
+                difficulty: "medium",
+                time: 40,
+                cuisine: "italian"
+            },
+            {
+                id: 3,
+                name: "Chicken Parmesan",
+                ingredients: ["chicken breast", "breadcrumbs", "eggs", "tomato sauce", "mozzarella", "parmesan"],
+                difficulty: "medium",
+                time: 45,
+                cuisine: "italian"
+            },
+
+            // Asian Cuisine
+            {
+                id: 4,
                 name: "Chicken Stir Fry",
                 ingredients: ["chicken", "bell pepper", "onion", "garlic", "soy sauce", "oil"],
                 difficulty: "easy",
@@ -51,7 +70,33 @@ class FlavorGraph {
                 cuisine: "asian"
             },
             {
-                id: 3,
+                id: 5,
+                name: "Beef and Broccoli",
+                ingredients: ["beef", "broccoli", "garlic", "ginger", "soy sauce", "oyster sauce"],
+                difficulty: "easy",
+                time: 25,
+                cuisine: "asian"
+            },
+            {
+                id: 6,
+                name: "Chicken Fried Rice",
+                ingredients: ["rice", "chicken", "eggs", "peas", "carrot", "soy sauce", "oil"],
+                difficulty: "easy",
+                time: 30,
+                cuisine: "asian"
+            },
+            {
+                id: 7,
+                name: "Pad Thai",
+                ingredients: ["rice noodles", "shrimp", "eggs", "bean sprouts", "peanuts", "fish sauce"],
+                difficulty: "medium",
+                time: 30,
+                cuisine: "asian"
+            },
+
+            // Mexican Cuisine
+            {
+                id: 8,
                 name: "Beef Tacos",
                 ingredients: ["ground beef", "tortillas", "lettuce", "tomato", "cheese", "onion"],
                 difficulty: "easy",
@@ -59,7 +104,25 @@ class FlavorGraph {
                 cuisine: "mexican"
             },
             {
-                id: 4,
+                id: 9,
+                name: "Chicken Quesadillas",
+                ingredients: ["chicken", "tortillas", "cheese", "bell pepper", "onion", "oil"],
+                difficulty: "easy",
+                time: 20,
+                cuisine: "mexican"
+            },
+            {
+                id: 10,
+                name: "Beef Burritos",
+                ingredients: ["ground beef", "tortillas", "rice", "beans", "cheese", "sour cream"],
+                difficulty: "easy",
+                time: 30,
+                cuisine: "mexican"
+            },
+
+            // Indian Cuisine
+            {
+                id: 11,
                 name: "Vegetable Curry",
                 ingredients: ["potato", "carrot", "onion", "coconut milk", "curry powder", "garlic"],
                 difficulty: "medium",
@@ -67,12 +130,214 @@ class FlavorGraph {
                 cuisine: "indian"
             },
             {
-                id: 5,
+                id: 12,
+                name: "Chicken Tikka Masala",
+                ingredients: ["chicken", "yogurt", "tomato sauce", "garlic", "ginger", "garam masala"],
+                difficulty: "medium",
+                time: 50,
+                cuisine: "indian"
+            },
+            {
+                id: 13,
+                name: "Dal Tadka",
+                ingredients: ["lentils", "onion", "garlic", "cumin", "turmeric", "oil"],
+                difficulty: "easy",
+                time: 30,
+                cuisine: "indian"
+            },
+
+            // American Cuisine
+            {
+                id: 14,
                 name: "Caesar Salad",
                 ingredients: ["lettuce", "croutons", "parmesan", "lemon", "garlic", "olive oil"],
                 difficulty: "easy",
                 time: 15,
                 cuisine: "american"
+            },
+            {
+                id: 15,
+                name: "Beef Burger",
+                ingredients: ["ground beef", "burger bun", "lettuce", "tomato", "onion", "cheese"],
+                difficulty: "easy",
+                time: 20,
+                cuisine: "american"
+            },
+            {
+                id: 16,
+                name: "Chicken Noodle Soup",
+                ingredients: ["chicken", "noodles", "carrot", "celery", "onion", "garlic"],
+                difficulty: "easy",
+                time: 30,
+                cuisine: "american"
+            },
+            {
+                id: 17,
+                name: "Mac and Cheese",
+                ingredients: ["pasta", "cheese", "milk", "butter", "flour", "breadcrumbs"],
+                difficulty: "easy",
+                time: 35,
+                cuisine: "american"
+            },
+
+            // Mediterranean Cuisine
+            {
+                id: 18,
+                name: "Greek Salad",
+                ingredients: ["tomato", "cucumber", "olives", "feta cheese", "olive oil", "oregano"],
+                difficulty: "easy",
+                time: 15,
+                cuisine: "mediterranean"
+            },
+            {
+                id: 19,
+                name: "Hummus",
+                ingredients: ["chickpeas", "tahini", "lemon", "garlic", "olive oil", "cumin"],
+                difficulty: "easy",
+                time: 15,
+                cuisine: "mediterranean"
+            },
+            {
+                id: 20,
+                name: "Falafel",
+                ingredients: ["chickpeas", "onion", "garlic", "parsley", "cumin", "flour"],
+                difficulty: "medium",
+                time: 40,
+                cuisine: "mediterranean"
+            },
+
+            // Thai Cuisine
+            {
+                id: 21,
+                name: "Green Curry",
+                ingredients: ["chicken", "green curry paste", "coconut milk", "eggplant", "basil", "fish sauce"],
+                difficulty: "medium",
+                time: 30,
+                cuisine: "thai"
+            },
+            {
+                id: 22,
+                name: "Tom Yum Soup",
+                ingredients: ["shrimp", "lemongrass", "lime", "chili", "mushrooms", "fish sauce"],
+                difficulty: "medium",
+                time: 25,
+                cuisine: "thai"
+            },
+
+            // Chinese Cuisine
+            {
+                id: 23,
+                name: "Kung Pao Chicken",
+                ingredients: ["chicken", "peanuts", "bell pepper", "chili", "soy sauce", "vinegar"],
+                difficulty: "medium",
+                time: 25,
+                cuisine: "chinese"
+            },
+            {
+                id: 24,
+                name: "Sweet and Sour Chicken",
+                ingredients: ["chicken", "bell pepper", "pineapple", "vinegar", "sugar", "ketchup"],
+                difficulty: "medium",
+                time: 30,
+                cuisine: "chinese"
+            },
+
+            // Japanese Cuisine
+            {
+                id: 25,
+                name: "Chicken Teriyaki",
+                ingredients: ["chicken", "teriyaki sauce", "garlic", "ginger", "sesame seeds"],
+                difficulty: "easy",
+                time: 25,
+                cuisine: "japanese"
+            },
+            {
+                id: 26,
+                name: "Tempura",
+                ingredients: ["shrimp", "flour", "eggs", "oil", "dipping sauce", "vegetables"],
+                difficulty: "medium",
+                time: 30,
+                cuisine: "japanese"
+            },
+
+            // Korean Cuisine
+            {
+                id: 27,
+                name: "Bulgogi",
+                ingredients: ["beef", "soy sauce", "garlic", "ginger", "sesame oil", "pear"],
+                difficulty: "easy",
+                time: 30,
+                cuisine: "korean"
+            },
+            {
+                id: 28,
+                name: "Kimchi Fried Rice",
+                ingredients: ["rice", "kimchi", "eggs", "green onions", "soy sauce", "oil"],
+                difficulty: "easy",
+                time: 20,
+                cuisine: "korean"
+            },
+
+            // British Cuisine
+            {
+                id: 29,
+                name: "Fish and Chips",
+                ingredients: ["fish", "potato", "flour", "oil", "lemon", "salt"],
+                difficulty: "medium",
+                time: 45,
+                cuisine: "british"
+            },
+            {
+                id: 30,
+                name: "Shepherd's Pie",
+                ingredients: ["ground lamb", "potato", "onion", "carrot", "peas", "gravy"],
+                difficulty: "medium",
+                time: 60,
+                cuisine: "british"
+            },
+
+            // Spanish Cuisine
+            {
+                id: 31,
+                name: "Paella",
+                ingredients: ["rice", "chicken", "shrimp", "saffron", "bell pepper", "onion"],
+                difficulty: "hard",
+                time: 50,
+                cuisine: "spanish"
+            },
+            {
+                id: 32,
+                name: "Gazpacho",
+                ingredients: ["tomato", "cucumber", "bell pepper", "onion", "garlic", "olive oil"],
+                difficulty: "easy",
+                time: 20,
+                cuisine: "spanish"
+            },
+
+            // Vegetarian Options
+            {
+                id: 33,
+                name: "Vegetarian Chili",
+                ingredients: ["beans", "tomato", "onion", "bell pepper", "chili powder", "garlic"],
+                difficulty: "easy",
+                time: 40,
+                cuisine: "vegetarian"
+            },
+            {
+                id: 34,
+                name: "Quinoa Salad",
+                ingredients: ["quinoa", "cucumber", "tomato", "onion", "lemon", "olive oil"],
+                difficulty: "easy",
+                time: 25,
+                cuisine: "vegetarian"
+            },
+            {
+                id: 35,
+                name: "Veggie Burger",
+                ingredients: ["black beans", "oats", "onion", "garlic", "spices", "egg"],
+                difficulty: "medium",
+                time: 35,
+                cuisine: "vegetarian"
             }
         ];
         this.ingredientGraph = this.buildIngredientGraph();
