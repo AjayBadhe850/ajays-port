@@ -4,15 +4,36 @@
 class FlavorGraph {
     constructor() {
         this.ingredients = new Set();
-        this.recipeDatabase = this.initializeRecipeDatabase();
-        this.ingredientGraph = this.buildIngredientGraph();
+        this.recipeDatabase = [];
+        this.ingredientGraph = new Map();
         this.substitutionMap = this.buildSubstitutionMap();
+        this.apiBaseUrl = 'http://localhost:3000/api';
+        this.token = localStorage.getItem('flavorgraph_token');
         this.initializeEventListeners();
+        this.loadRecipesFromAPI();
     }
 
-    // Initialize comprehensive recipe database
-    initializeRecipeDatabase() {
-        return [
+    // Load recipes from API
+    async loadRecipesFromAPI() {
+        try {
+            const response = await fetch(`${this.apiBaseUrl}/recipes`);
+            if (response.ok) {
+                this.recipeDatabase = await response.json();
+                this.ingredientGraph = this.buildIngredientGraph();
+                console.log('Recipes loaded from API:', this.recipeDatabase.length);
+            } else {
+                console.error('Failed to load recipes from API');
+                this.loadFallbackRecipes();
+            }
+        } catch (error) {
+            console.error('Error loading recipes:', error);
+            this.loadFallbackRecipes();
+        }
+    }
+
+    // Fallback recipes if API is not available
+    loadFallbackRecipes() {
+        this.recipeDatabase = [
             {
                 id: 1,
                 name: "Classic Spaghetti Carbonara",
@@ -52,48 +73,9 @@ class FlavorGraph {
                 difficulty: "easy",
                 time: 15,
                 cuisine: "american"
-            },
-            {
-                id: 6,
-                name: "Fish and Chips",
-                ingredients: ["fish", "potato", "flour", "oil", "lemon", "salt"],
-                difficulty: "medium",
-                time: 45,
-                cuisine: "british"
-            },
-            {
-                id: 7,
-                name: "Margherita Pizza",
-                ingredients: ["pizza dough", "tomato sauce", "mozzarella", "basil", "olive oil"],
-                difficulty: "medium",
-                time: 40,
-                cuisine: "italian"
-            },
-            {
-                id: 8,
-                name: "Chicken Noodle Soup",
-                ingredients: ["chicken", "noodles", "carrot", "celery", "onion", "garlic"],
-                difficulty: "easy",
-                time: 30,
-                cuisine: "american"
-            },
-            {
-                id: 9,
-                name: "Beef Burger",
-                ingredients: ["ground beef", "burger bun", "lettuce", "tomato", "onion", "cheese"],
-                difficulty: "easy",
-                time: 20,
-                cuisine: "american"
-            },
-            {
-                id: 10,
-                name: "Pasta Primavera",
-                ingredients: ["pasta", "broccoli", "carrot", "bell pepper", "garlic", "olive oil"],
-                difficulty: "easy",
-                time: 25,
-                cuisine: "italian"
             }
         ];
+        this.ingredientGraph = this.buildIngredientGraph();
     }
 
     // Build ingredient relationship graph using graph theory
@@ -378,8 +360,8 @@ class FlavorGraph {
         this.clearResults();
     }
 
-    // Find recipes using both algorithms
-    findRecipes() {
+    // Find recipes using API
+    async findRecipes() {
         if (this.ingredients.size === 0) {
             alert('Please add some ingredients first!');
             return;
@@ -387,20 +369,37 @@ class FlavorGraph {
 
         this.showLoading();
         
-        // Simulate processing time for better UX
-        setTimeout(() => {
+        try {
             const availableIngredients = [...this.ingredients];
-            
-            // Use both algorithms and combine results
+            const response = await fetch(`${this.apiBaseUrl}/recipes/search`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ingredients: availableIngredients })
+            });
+
+            if (response.ok) {
+                const results = await response.json();
+                this.displayResults(results, availableIngredients);
+            } else {
+                // Fallback to local algorithms
+                const backtrackingResults = this.findRecipesWithBacktracking(availableIngredients);
+                const greedyResults = this.findRecipesWithGreedy(availableIngredients);
+                const allResults = [...backtrackingResults, ...greedyResults];
+                const uniqueResults = this.deduplicateResults(allResults);
+                this.displayResults(uniqueResults, availableIngredients);
+            }
+        } catch (error) {
+            console.error('Error searching recipes:', error);
+            // Fallback to local algorithms
+            const availableIngredients = [...this.ingredients];
             const backtrackingResults = this.findRecipesWithBacktracking(availableIngredients);
             const greedyResults = this.findRecipesWithGreedy(availableIngredients);
-            
-            // Combine and deduplicate results
             const allResults = [...backtrackingResults, ...greedyResults];
             const uniqueResults = this.deduplicateResults(allResults);
-            
             this.displayResults(uniqueResults, availableIngredients);
-        }, 1000);
+        }
     }
 
     // Deduplicate results
