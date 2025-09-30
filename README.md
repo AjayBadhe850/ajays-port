@@ -339,4 +339,6 @@ If you have any questions or suggestions, please:
 
 ---
 
-**FlavorGraph** - *Powered by Graph Theory & Algorithmic Intelligence* 🧠✨
+**© 2024 [Ajay Badhe](https://github.com/AjayBadhe850)** - *FlavorGraph: Intelligent Recipe Navigator* 🧠✨
+
+*Powered by Graph Theory, Backtracking & Greedy Algorithms*

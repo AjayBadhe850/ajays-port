@@ -279,3 +279,9 @@ salmon + asparagus + lemon + dill + butter + white wine + garlic + onion
 ---
 
 **Ready to start cooking? Visit `https://ajaybadhe850.github.io/ajays-port/` and begin your culinary adventure!** 🍽️✨
+
+---
+
+**© 2024 [Ajay Badhe](https://github.com/AjayBadhe850)** - *FlavorGraph: Intelligent Recipe Navigator* 🧠✨
+
+*Powered by Graph Theory, Backtracking & Greedy Algorithms*
