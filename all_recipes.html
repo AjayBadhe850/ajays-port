@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Recipes - Recipe Finder</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Recipe Finder</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/all-recipes">All Recipes</a>
+                <a href="/add-recipe">Add Recipe</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h2>All Recipes</h2>
+            <p>Browse our complete collection of delicious recipes</p>
+        </section>
+
+        <section class="recipes-grid">
+            {{ recipes }}
+        </section>
+
+        <section class="actions">
+            <a href="/" class="btn btn-primary">Search Recipes</a>
+            <a href="/add-recipe" class="btn btn-secondary">Add New Recipe</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Recipe Finder - Built with Python, SQL, HTML & CSS</p>
+        </div>
+    </footer>
+</body>
+</html>

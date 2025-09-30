@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Recipe Finder</h1>
+            <p>Find delicious recipes based on your available ingredients</p>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/all-recipes">All Recipes</a>
+                <a href="/add-recipe">Add Recipe</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="search-section">
+            <h2>Search Recipes by Ingredients</h2>
+            <form id="searchForm" method="POST" action="/search">
+                <div class="ingredient-input">
+                    <input type="text" id="ingredientInput" name="ingredient" placeholder="Enter an ingredient..." required>
+                    <button type="button" id="addIngredient">Add</button>
+                </div>
+                <div id="ingredientList" class="ingredient-list"></div>
+                
+                <div class="search-options">
+                    <div class="intelligent-search-toggle">
+                        <label>
+                            <input type="checkbox" id="intelligentSearch" name="intelligent_search" value="true">
+                            <span class="toggle-label">🧠 Use Intelligent Search (Graph Theory + Greedy + Backtracking)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="preference-options" id="preferenceOptions" style="display: none;">
+                        <div class="preference-row">
+                            <label for="difficulty">Difficulty Level:</label>
+                            <select id="difficulty" name="difficulty">
+                                <option value="1">Beginner (1)</option>
+                                <option value="2">Easy (2)</option>
+                                <option value="3" selected>Medium (3)</option>
+                                <option value="4">Hard (4)</option>
+                                <option value="5">Expert (5)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="preference-row">
+                            <label for="timeLimit">Max Cooking Time (minutes):</label>
+                            <input type="number" id="timeLimit" name="time_limit" value="60" min="10" max="180">
+                        </div>
+                        
+                        <div class="preference-row">
+                            <label for="cuisine">Preferred Cuisine:</label>
+                            <select id="cuisine" name="cuisine">
+                                <option value="indian" selected>Indian</option>
+                                <option value="italian">Italian</option>
+                                <option value="chinese">Chinese</option>
+                                <option value="mexican">Mexican</option>
+                                <option value="any">Any</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="search-btn">Search Recipes</button>
+            </form>
+        </section>
+
+        <section class="actions">
+            <a href="/add-recipe" class="btn btn-primary">Add New Recipe</a>
+            <a href="/all-recipes" class="btn btn-secondary">View All Recipes</a>
+        </section>
+
+        <section id="results" class="results-section" style="display: none;">
+            <h2>Search Results</h2>
+            <div id="recipeList" class="recipe-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Recipe Finder - Built with Python, SQL, HTML & CSS</p>
+        </div>
+    </footer>
+
+    <script>
+        const ingredientInput = document.getElementById('ingredientInput');
+        const addIngredientBtn = document.getElementById('addIngredient');
+        const ingredientList = document.getElementById('ingredientList');
+        const searchForm = document.getElementById('searchForm');
+        const results = document.getElementById('results');
+        const recipeList = document.getElementById('recipeList');
+        const intelligentSearch = document.getElementById('intelligentSearch');
+        const preferenceOptions = document.getElementById('preferenceOptions');
+
+        let ingredients = [];
+
+        addIngredientBtn.addEventListener('click', function() {
+            const ingredient = ingredientInput.value.trim().toLowerCase();
+            if (ingredient && !ingredients.includes(ingredient)) {
+                ingredients.push(ingredient);
+                updateIngredientList();
+                ingredientInput.value = '';
+            }
+        });
+
+        ingredientInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addIngredientBtn.click();
+            }
+        });
+
+        function updateIngredientList() {
+            ingredientList.innerHTML = '';
+            ingredients.forEach((ingredient, index) => {
+                const div = document.createElement('div');
+                div.className = 'ingredient-tag';
+                div.innerHTML = `
+                    <span>${ingredient}</span>
+                    <button type="button" onclick="removeIngredient(${index})">×</button>
+                `;
+                ingredientList.appendChild(div);
+            });
+        }
+
+        function removeIngredient(index) {
+            ingredients.splice(index, 1);
+            updateIngredientList();
+        }
+
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            ingredients.forEach(ingredient => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'ingredients';
+                input.value = ingredient;
+                searchForm.appendChild(input);
+            });
+
+            searchForm.submit();
+        });
+
+        // Toggle intelligent search options
+        intelligentSearch.addEventListener('change', function() {
+            if (this.checked) {
+                preferenceOptions.style.display = 'block';
+            } else {
+                preferenceOptions.style.display = 'none';
+            }
+        });
+
+        // Show results if we have them
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('results') === 'true') {
+            results.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
