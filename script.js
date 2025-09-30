@@ -646,6 +646,7 @@ class FlavorGraph {
         const findButton = document.getElementById('findRecipes');
         const clearButton = document.getElementById('clearIngredients');
         const tabButtons = document.querySelectorAll('.tab-btn');
+        const demoButtons = document.querySelectorAll('.demo-btn');
 
         // Add ingredient
         addButton.addEventListener('click', () => this.addIngredient());
@@ -662,6 +663,11 @@ class FlavorGraph {
         // Tab switching
         tabButtons.forEach(button => {
             button.addEventListener('click', () => this.switchTab(button.dataset.tab));
+        });
+
+        // Demo buttons
+        demoButtons.forEach(button => {
+            button.addEventListener('click', () => this.loadDemoIngredients(button.dataset.ingredients));
         });
     }
 
@@ -704,6 +710,57 @@ class FlavorGraph {
         this.ingredients.clear();
         this.updateIngredientList();
         this.clearResults();
+    }
+
+    // Load demo ingredients from demo button
+    loadDemoIngredients(ingredientsString) {
+        // Clear existing ingredients
+        this.ingredients.clear();
+        
+        // Parse ingredients from comma-separated string
+        const ingredients = ingredientsString.split(',').map(ingredient => 
+            ingredient.trim().toLowerCase()
+        );
+        
+        // Add all demo ingredients
+        ingredients.forEach(ingredient => {
+            this.ingredients.add(ingredient);
+        });
+        
+        // Update the display
+        this.updateIngredientList();
+        
+        // Clear any existing results
+        this.clearResults();
+        
+        // Show a brief message
+        this.showDemoMessage(ingredients.length);
+        
+        // Auto-find recipes after a short delay
+        setTimeout(() => {
+            this.findRecipes();
+        }, 500);
+        
+        // Add visual feedback to the clicked button
+        const clickedButton = event.target.closest('.demo-btn');
+        if (clickedButton) {
+            clickedButton.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                clickedButton.style.transform = '';
+            }, 150);
+        }
+    }
+
+    // Show demo loading message
+    showDemoMessage(count) {
+        const container = document.getElementById('recipeResults');
+        container.innerHTML = `
+            <div class="loading">
+                <i class="fas fa-magic"></i>
+                <p>Loading ${count} demo ingredients...</p>
+                <p>Finding recipes with algorithmic intelligence...</p>
+            </div>
+        `;
     }
 
     // Find recipes using API
