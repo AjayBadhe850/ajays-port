@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlavorGraph - Intelligent Recipe Navigator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <h1>FlavorGraph</h1>
+            </div>
+            <p class="subtitle">Intelligent Recipe Navigator with Algorithmic Insights</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <h2><i class="fas fa-search"></i> Find Recipes</h2>
+                <div class="ingredient-input">
+                    <input type="text" id="ingredientInput" placeholder="Enter an ingredient...">
+                    <button id="addIngredient" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+                </div>
+                <div class="ingredient-list" id="ingredientList"></div>
+                <div class="action-buttons">
+                    <button id="findRecipes" class="btn btn-success">
+                        <i class="fas fa-search"></i> Find Recipes
+                    </button>
+                    <button id="clearIngredients" class="btn btn-secondary">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="recipes">
+                        <i class="fas fa-book"></i> Recipes
+                    </button>
+                    <button class="tab-btn" data-tab="gaps">
+                        <i class="fas fa-exclamation-triangle"></i> Missing Ingredients
+                    </button>
+                    <button class="tab-btn" data-tab="substitutions">
+                        <i class="fas fa-exchange-alt"></i> Substitutions
+                    </button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="recipes" class="tab-pane active">
+                        <div class="algorithm-info">
+                            <h3>Algorithm: Backtracking + Greedy Optimization</h3>
+                            <p>Using graph theory to find optimal recipe combinations</p>
+                        </div>
+                        <div id="recipeResults" class="recipe-grid"></div>
+                    </div>
+
+                    <div id="gaps" class="tab-pane">
+                        <div class="algorithm-info">
+                            <h3>Gap Analysis</h3>
+                            <p>Identifying missing ingredients for each recipe</p>
+                        </div>
+                        <div id="gapResults" class="gap-list"></div>
+                    </div>
+
+                    <div id="substitutions" class="tab-pane">
+                        <div class="algorithm-info">
+                            <h3>Substitution Engine</h3>
+                            <p>Smart ingredient replacement recommendations</p>
+                        </div>
+                        <div id="substitutionResults" class="substitution-list"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 FlavorGraph - Powered by Graph Theory & Algorithmic Intelligence</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
