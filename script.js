@@ -1,7 +1,22 @@
-// FlavorGraph: Intelligent Recipe Navigator
-// Implementing Graph Theory, Backtracking, and Greedy Algorithms
+/**
+ * FlavorGraph: Intelligent Recipe Navigator
+ * 
+ * A sophisticated recipe suggestion system implementing:
+ * - Graph Theory for ingredient relationship analysis
+ * - Backtracking Algorithm for systematic recipe exploration  
+ * - Greedy Algorithm for efficient optimization
+ * - Advanced substitution engine with confidence scoring
+ * 
+ * @author FlavorGraph Team
+ * @version 2.0
+ * @since 2024
+ */
 
 class FlavorGraph {
+    /**
+     * Initialize FlavorGraph with comprehensive recipe database and algorithms
+     * @constructor
+     */
     constructor() {
         this.ingredients = new Set();
         this.recipeDatabase = [];
@@ -13,20 +28,28 @@ class FlavorGraph {
         this.loadRecipesFromAPI();
     }
 
-    // Load recipes from API
+    /**
+     * Load recipes from API with comprehensive error handling
+     * @async
+     * @returns {Promise<void>}
+     */
     async loadRecipesFromAPI() {
         try {
             const response = await fetch(`${this.apiBaseUrl}/recipes`);
             if (response.ok) {
-                this.recipeDatabase = await response.json();
-                this.ingredientGraph = this.buildIngredientGraph();
-                console.log('Recipes loaded from API:', this.recipeDatabase.length);
+                const data = await response.json();
+                if (Array.isArray(data) && data.length > 0) {
+                    this.recipeDatabase = data;
+                    this.ingredientGraph = this.buildIngredientGraph();
+                    console.log('Recipes loaded from API:', this.recipeDatabase.length);
+                } else {
+                    throw new Error('Invalid API response format');
+                }
             } else {
-                console.error('Failed to load recipes from API');
-                this.loadFallbackRecipes();
+                throw new Error(`API request failed with status: ${response.status}`);
             }
         } catch (error) {
-            console.error('Error loading recipes:', error);
+            console.error('Error loading recipes from API:', error.message);
             this.loadFallbackRecipes();
         }
     }
